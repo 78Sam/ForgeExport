@@ -1,0 +1,10 @@
+**/__pycache__
+tmp/**
+!tmp/.gitkeep
+results/**
+**/build_log.log
+containers/build-logs/**
+!containers/build-logs/.gitkeep
+**/.DS_STORE
+forgevenv/**
+**/data/pcap/**

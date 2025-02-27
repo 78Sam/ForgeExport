@@ -1,0 +1,10 @@
+# Nmap 7.80 scan initiated Thu Feb 27 15:13:33 2025 as: nmap -oN capture-results/nmap.txt 172.18.0.5
+Nmap scan report for server.main (172.18.0.5)
+Host is up (0.0000050s latency).
+Not shown: 998 closed ports
+PORT   STATE SERVICE
+22/tcp open  ssh
+80/tcp open  http
+MAC Address: 02:42:AC:12:00:05 (Unknown)
+
+# Nmap done at Thu Feb 27 15:13:33 2025 -- 1 IP address (1 host up) scanned in 0.17 seconds

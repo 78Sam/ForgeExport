@@ -1,0 +1,304 @@
+15:11:33  [background]  Context.py.Context.initSchema()::               
+
+15:11:33  [info]        Context.py.Context.initSchema():197               Starting schema init
+
+15:11:33  [background]  Context.py.Context.validateSchema()::           
+
+15:11:33  [background]  Context.py.Context.readSchema()::               
+
+15:11:33  [background]  Validator.py.SchemaValidator.validateSchema():: 
+
+15:11:33  [background]  Validator.py.SchemaValidator.validateContainers():: 
+
+15:11:33  [background]  Validator.py.SchemaValidator.validateNetworks():: 
+
+15:11:33  [background]  Validator.py.SchemaValidator.validateServices():: 
+
+15:11:33  [background]  Context.py.Context.createNetworks()::           
+
+15:11:33  [background]  Context.py.Context.createContainers()::         
+
+15:11:33  [background]  Context.py.Context.createContainer()::          
+
+15:11:33  [info]        Context.py.Context.createContainer():119          Created directory at '/Users/sammccormack/Documents/Uni/Year4/Diss/ForgeExport/scenarios/scenario-stress/data/pcap'
+
+15:11:33  [info]        Context.py.Context.createContainer():127          No network specified in container 'nginx-tcpdump'
+
+15:11:33  [background]  Container.py.Container.__init__():36             
+
+15:11:33  [ok]          Context.py.Context.createContainer():131          Created container nginx-tcpdump
+
+15:11:33  [background]  Context.py.Context.createContainer()::          
+
+15:11:33  [background]  Container.py.Container.__init__():36             
+
+15:11:33  [background]  Container.py.Container.registerParent()::       
+
+15:11:33  [ok]          Context.py.Context.createContainer():131          Created container nginx
+
+15:11:33  [background]  Context.py.Context.createContainers()::         
+
+15:11:33  [background]  Context.py.Context.createContainer()::          
+
+15:11:33  [info]        Context.py.Context.createContainer():127          No network specified in container 'siege-0-tcpdump'
+
+15:11:33  [background]  Container.py.Container.__init__():36             
+
+15:11:33  [ok]          Context.py.Context.createContainer():131          Created container siege-0-tcpdump
+
+15:11:33  [background]  Context.py.Context.createContainer()::          
+
+15:11:33  [background]  Container.py.Container.__init__():36             
+
+15:11:33  [background]  Container.py.Container.registerParent()::       
+
+15:11:33  [ok]          Context.py.Context.createContainer():131          Created container siege-0
+
+15:11:33  [background]  Context.py.Context.createContainers()::         
+
+15:11:33  [background]  Context.py.Context.createContainer()::          
+
+15:11:33  [info]        Context.py.Context.createContainer():127          No network specified in container 'siege-1-tcpdump'
+
+15:11:33  [background]  Container.py.Container.__init__():36             
+
+15:11:33  [ok]          Context.py.Context.createContainer():131          Created container siege-1-tcpdump
+
+15:11:33  [background]  Context.py.Context.createContainer()::          
+
+15:11:33  [background]  Container.py.Container.__init__():36             
+
+15:11:33  [background]  Container.py.Container.registerParent()::       
+
+15:11:33  [ok]          Context.py.Context.createContainer():131          Created container siege-1
+
+15:11:33  [background]  Container.py.Container.registerParent()::       
+
+15:11:33  [background]  Container.py.Container.registerParent()::       
+
+15:11:33  [ok]          Context.py.Context.initSchema():252               Schema init success
+
+15:11:33  [background]  Controller.py.Controller.startNetworks()::      
+
+15:11:33  [background]  Network.py.Network.createNetwork()::            
+
+15:11:33  [info]        Network.py.Network.createNetwork():94            Network main running command docker network create -d bridge --subnet 192.168.0.0/24 main
+
+15:11:33  [background]  Network.py.Network.commit()::                   
+
+15:11:34  [ok]          Network.py.Network.createNetwork():107            Created network main successfully
+
+15:11:34  [background]  Controller.py.Controller.start()::              
+
+15:11:34  [background]  Container.py.Container.start()::                
+
+15:11:34  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:11:34  [info]        Container.py.Container.start():191                Starting Container: nginx docker run --name nginx -v {self.pwd}/environment:/usr/share/nginx/html -p 8080:80 --ip 192.168.0.5 --network=main -itd forge/nginx
+
+15:11:34  [background]  Container.py.Container.commit()::               
+
+15:11:34  [ok]          Container.py.Container.start():200                Started Container: nginx
+
+15:11:34  [background]  Container.py.Container.start()::                
+
+15:11:34  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:11:34  [info]        Container.py.Container.start():191                Starting Service: nginx-tcpdump docker run --name nginx-tcpdump -v {self.pwd}/data/pcap:/data/pcap --network=container:nginx -itd forge/tcpdump
+
+15:11:34  [background]  Container.py.Container.commit()::               
+
+15:11:34  [ok]          Container.py.Container.start():200                Started Service: nginx-tcpdump
+
+15:11:34  [background]  Container.py.Container.run()::                  
+
+15:11:34  [info]        Container.py.Container.run():240                  Service: nginx-tcpdump running command: /usr/sbin/tcpdump 'not(ip6 or arp or (udp and (src port 5353 or src port 57621 or src port 1900)))' -v -w '/data/pcap/{self.name}.pcap'
+
+15:11:34  [background]  Container.py.Container.commit()::               
+
+15:11:34  [ok]          Container.py.Container.run():243                  Service: nginx-tcpdump ran command successfully
+
+15:11:34  [background]  Container.py.Container.start()::                
+
+15:11:34  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:11:34  [background]  Container.py.Container.registerDependent()::    
+
+15:11:34  [info]        Container.py.Container.start():191                Starting Container: siege-1 docker run --name siege-1 --network=main -itd forge/siege
+
+15:11:34  [background]  Container.py.Container.commit()::               
+
+15:11:34  [ok]          Container.py.Container.start():200                Started Container: siege-1
+
+15:11:34  [background]  Container.py.Container.start()::                
+
+15:11:34  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:11:34  [info]        Container.py.Container.start():191                Starting Service: siege-1-tcpdump docker run --name siege-1-tcpdump -v {self.pwd}/data/pcap:/data/pcap --network=container:siege-1 -itd forge/tcpdump
+
+15:11:34  [background]  Container.py.Container.commit()::               
+
+15:11:34  [ok]          Container.py.Container.start():200                Started Service: siege-1-tcpdump
+
+15:11:34  [background]  Container.py.Container.run()::                  
+
+15:11:34  [info]        Container.py.Container.run():240                  Service: siege-1-tcpdump running command: /usr/sbin/tcpdump 'not(ip6 or arp or (udp and (src port 5353 or src port 57621 or src port 1900)))' -v -w '/data/pcap/{self.name}.pcap'
+
+15:11:34  [background]  Container.py.Container.commit()::               
+
+15:11:34  [ok]          Container.py.Container.run():243                  Service: siege-1-tcpdump ran command successfully
+
+15:11:34  [background]  Container.py.Container.start()::                
+
+15:11:34  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:11:34  [background]  Container.py.Container.registerDependent()::    
+
+15:11:34  [info]        Container.py.Container.start():191                Starting Container: siege-0 docker run --name siege-0 --network=main -itd forge/siege
+
+15:11:34  [background]  Container.py.Container.commit()::               
+
+15:11:35  [ok]          Container.py.Container.start():200                Started Container: siege-0
+
+15:11:35  [background]  Container.py.Container.start()::                
+
+15:11:35  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:11:35  [info]        Container.py.Container.start():191                Starting Service: siege-0-tcpdump docker run --name siege-0-tcpdump -v {self.pwd}/data/pcap:/data/pcap --network=container:siege-0 -itd forge/tcpdump
+
+15:11:35  [background]  Container.py.Container.commit()::               
+
+15:11:35  [ok]          Container.py.Container.start():200                Started Service: siege-0-tcpdump
+
+15:11:35  [background]  Container.py.Container.run()::                  
+
+15:11:35  [info]        Container.py.Container.run():240                  Service: siege-0-tcpdump running command: /usr/sbin/tcpdump 'not(ip6 or arp or (udp and (src port 5353 or src port 57621 or src port 1900)))' -v -w '/data/pcap/{self.name}.pcap'
+
+15:11:35  [background]  Container.py.Container.commit()::               
+
+15:11:35  [ok]          Container.py.Container.run():243                  Service: siege-0-tcpdump ran command successfully
+
+15:11:36  [background]  Container.py.Container.run()::                  
+
+15:11:36  [info]        Container.py.Container.run():240                  Container: siege-0 running command: siege -c 50 -d 10 -t4S 192.168.0.5
+
+15:11:36  [background]  Container.py.Container.commit()::               
+
+15:11:36  [background]  Container.py.Container.markIntent()::           
+
+15:11:36  [ok]          Container.py.Container.run():243                  Container: siege-0 ran command successfully
+
+15:11:36  [background]  Container.py.Container.run()::                  
+
+15:11:36  [info]        Container.py.Container.run():240                  Container: siege-1 running command: siege -c 50 -d 10 -t4S 192.168.0.5
+
+15:11:36  [background]  Container.py.Container.commit()::               
+
+15:11:36  [background]  Container.py.Container.markIntent()::           
+
+15:11:36  [ok]          Container.py.Container.run():243                  Container: siege-1 ran command successfully
+
+15:11:41  [background]  Controller.py.Controller.complete()::           
+
+15:11:41  [background]  Controller.py.Controller.tearDown()::           
+
+15:11:41  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:11:41  [background]  Container.py.Container.stop()::                 
+
+15:11:41  [background]  Container.py.Container.stop()::                 
+
+15:11:41  [background]  Container.py.Container.stop()::                 
+
+15:11:41  [background]  Container.py.Container.stop()::                 
+
+15:11:41  [background]  Container.py.Container.run()::                  
+
+15:11:41  [background]  Container.py.Container.run()::                  
+
+15:11:41  [info]        Container.py.Container.run():240                  Service: siege-1-tcpdump running command: sh -c 'pkill tcpdump'
+
+15:11:41  [info]        Container.py.Container.run():240                  Service: siege-0-tcpdump running command: sh -c 'pkill tcpdump'
+
+15:11:41  [background]  Container.py.Container.commit()::               
+
+15:11:41  [background]  Container.py.Container.commit()::               
+
+15:11:41  [ok]          Container.py.Container.run():243                  Service: siege-1-tcpdump ran command successfully
+
+15:11:41  [ok]          Container.py.Container.run():243                  Service: siege-0-tcpdump ran command successfully
+
+15:11:41  [info]        Container.py.Container.stop():315                 Stopping Service: siege-1-tcpdump
+
+15:11:41  [info]        Container.py.Container.stop():315                 Stopping Service: siege-0-tcpdump
+
+15:11:41  [background]  Container.py.Container.commit()::               
+
+15:11:41  [background]  Container.py.Container.commit()::               
+
+15:11:43  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:11:45  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:11:47  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:11:49  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:11:51  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:11:51  [ok]          Container.py.Container.stop():321                 Stopped Service: siege-1-tcpdump
+
+15:11:51  [ok]          Container.py.Container.stop():321                 Stopped Service: siege-0-tcpdump
+
+15:11:51  [info]        Container.py.Container.stop():315                 Stopping Container: siege-1
+
+15:11:51  [info]        Container.py.Container.stop():315                 Stopping Container: siege-0
+
+15:11:51  [background]  Container.py.Container.commit()::               
+
+15:11:51  [background]  Container.py.Container.commit()::               
+
+15:11:51  [ok]          Container.py.Container.stop():321                 Stopped Container: siege-1
+
+15:11:51  [ok]          Container.py.Container.stop():321                 Stopped Container: siege-0
+
+15:11:53  [background]  Container.py.Container.stop()::                 
+
+15:11:53  [background]  Container.py.Container.stop()::                 
+
+15:11:53  [background]  Container.py.Container.run()::                  
+
+15:11:53  [info]        Container.py.Container.run():240                  Service: nginx-tcpdump running command: sh -c 'pkill tcpdump'
+
+15:11:53  [background]  Container.py.Container.commit()::               
+
+15:11:53  [ok]          Container.py.Container.run():243                  Service: nginx-tcpdump ran command successfully
+
+15:11:53  [info]        Container.py.Container.stop():315                 Stopping Service: nginx-tcpdump
+
+15:11:53  [background]  Container.py.Container.commit()::               
+
+15:12:03  [ok]          Container.py.Container.stop():321                 Stopped Service: nginx-tcpdump
+
+15:12:03  [info]        Container.py.Container.stop():315                 Stopping Container: nginx
+
+15:12:03  [background]  Container.py.Container.commit()::               
+
+15:12:03  [ok]          Container.py.Container.stop():321                 Stopped Container: nginx
+
+15:12:03  [ok]          Controller.py.Controller.tearDown():111           Teardown took 0.38 minutes
+
+15:12:03  [background]  Controller.py.Controller.removeNetworks()::     
+
+15:12:03  [background]  Network.py.Network.removeNetwork()::            
+
+15:12:03  [background]  Network.py.Network.commit()::                   
+
+15:12:04  [ok]          Network.py.Network.removeNetwork():117            Removed network main successfully
+
+15:12:04  [background]  Controller.py.Controller.writeIntents()::       
+
+15:12:04  [background]  Controller.py.Controller.writeTrail()::         
+
+15:12:04  [ok]          capture.py.scenario():84                         Capture complete in 0.46 minutes
+

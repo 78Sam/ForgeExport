@@ -1,0 +1,131 @@
+{
+    "containers": {
+        "router": {
+            "intent": "Benign",
+            "image": "forge/alpine",
+            "params": "--cap-add=NET_ADMIN",
+            "networking": {
+                "network": "wan",
+                "ip": "192.168.0.6"
+            }
+        },
+        "wordpress": {
+            "intent": "Benign",
+            "image": "forge/wordpress",
+            "params": "-e WORDPRESS_DB_HOST=mysql_server -e WORDPRESS_DB_USER=root -e WORDPRESS_DB_PASSWORD=root -e WORDPRESS_DB_NAME=wordpress --cap-add=NET_ADMIN",
+            "volumes": ["{self.pwd}/environment/wordpress:/var/www/html", "{self.pwd}/environment/config/php.ini:/usr/local/etc/php/php.ini"],
+            "depends_on": ["mysql_server", "phpmyadmin", "router"],
+            "services": ["tcpdump"],
+            "networking": {
+                "network": "lan",
+                "ip": "172.18.0.2",
+                "ports": "8000:80"
+            }
+        },
+        "mysql_server": {
+           "intent": "Benign",
+            "image": "forge/mysql-wordpress",
+            "params": "-e MYSQL_DATABASE=wordpress -e MYSQL_ROOT_PASSWORD=root --cap-add=NET_ADMIN",
+            "volumes": ["{self.pwd}/environment/mysql:/var/lib/mysql"],
+            "depends_on": ["router"],
+            "services": ["tcpdump"],
+            "networking": {
+                "network": "lan",
+                "ip": "172.18.0.3"
+            } 
+        },
+        "phpmyadmin": {
+           "intent": "Benign",
+            "image": "forge/phpmyadmin",
+            "depends_on": ["mysql_server", "router"],
+            "params": "--link mysql_server:db -e MYSQL_ROOT_PASSWORD=root --cap-add=NET_ADMIN",
+            "enabled": false,
+            "networking": {
+                "network": "lan",
+                "ip": "172.18.0.4",
+                "ports": "8080:80"
+            } 
+        },
+        "admin-requests": {
+            "intent": "Benign",
+            "image": "forge/python-requests",
+            "params": "--cap-add=NET_ADMIN",
+            "volumes": ["{self.pwd}/environment/scripts:/usr/share/scripts"],
+            "depends_on": ["wordpress", "exploit", "router"],
+            "services": ["requests-dump"],
+            "enabled": true,
+            "networking": {
+                "network": "lan",
+                "ip": "172.18.0.5"
+            }
+        },
+        "exploit": {
+            "intent": "Attack",
+            "image": "forge/exploits",
+            "params": "--cap-add=NET_ADMIN",
+            "volumes": ["{self.pwd}/data/exploit:/usr/share/capture", "{self.pwd}/environment/scripts:/usr/share/scripts"],
+            "depends_on": ["wordpress", "router"],
+            "services": ["tcpdump"],
+            "enabled": true,
+            "networking": {
+                "network": "wan",
+                "ip": "192.168.0.5"
+            }
+        },
+        "requests": {
+            "intent": "Attack",
+            "image": "forge/python-requests",
+            "params": "--cap-add=NET_ADMIN",
+            "volumes": ["{self.pwd}/environment/scripts:/usr/share/scripts"],
+            "depends_on": ["wordpress", "exploit", "admin-requests", "router"],
+            "services": ["requests-dump"],
+            "clones": 10,
+            "networking": {
+                "network": "wan"
+            }
+        }
+    },
+    "services": {
+        "tcpdump": {
+            "image": "forge/tcpdump",
+            "command": "/usr/sbin/tcpdump 'not(ip6 or arp or (udp and (src port 5353 or src port 57621 or src port 1900)))' -v -w '/data/pcap/{self.name}.pcap'",
+            "down_command": "sh -c 'pkill tcpdump'",
+            "volumes": ["{self.pwd}/data/pcap:/data/pcap"],
+            "networking": {
+                "mode": "attach"
+            }
+        },
+        "requests-dump": {
+            "image": "forge/tcpdump",
+            "down_command": "sh -c 'pkill tcpdump'",
+            "volumes": ["{self.pwd}/data/pcap:/data/pcap"],
+            "networking": {
+                "mode": "attach"
+            }
+        }
+    },
+    "networks": {
+        "lan": {
+            "driver": "bridge",
+            "subnet": "172.18.0.0/16",
+            "base_conditions": {
+                "delay": 0.001,
+                "delay_deviation": 0.001,
+                "perc_loss": 0.0,
+                "distribution": "pareto",
+                "perc_corrupt": 0.0
+            }
+        },
+        "wan": {
+            "driver": "bridge",
+            "subnet": "192.168.0.0/16",
+            "base_conditions": {
+                "delay": 1.0,
+                "delay_deviation": 0.5,
+                "perc_loss": 0.0,
+                "distribution": "pareto",
+                "perc_corrupt": 0.0
+            }
+        }
+    }
+}

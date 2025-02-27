@@ -1,0 +1,91 @@
+{
+    "tests": [
+        {
+            "name": "PortSniff",
+            "enabled": true,
+            "metadata": {}
+        },
+        {
+            "name": "RollingImportancesSniff",
+            "enabled": false,
+            "metadata": {}
+        },
+        {
+            "name": "NearestNeighboursSniff",
+            "enabled": true,
+            "metadata": {}
+        },
+        {
+            "name": "SingleFeatureEfficacySniff",
+            "enabled": false,
+            "metadata": {}
+        },
+        {
+            "name": "BackwardPacketsSniff",
+            "enabled": true,
+            "metadata": {}
+        },
+        {
+            "name": "CosineSniff",
+            "enabled": true,
+            "metadata": {
+                "drop_fields": [
+                    "Process Time",
+                    "Intent",
+                    "Target",
+                    "From",
+                    "Idle Std",
+                    "Previous Flow Time",
+                    "Duration",
+                    "Active Min",
+                    "Active Max",
+                    "Active Std",
+                    "Fwd IAT Max",
+                    "Bwd IAT Max",
+                    "Fwd IAT Std",
+                    "Bwd IAT Std",
+                    "Bwd IAT Min",
+                    "Fwd IAT Min",
+                    "Idle Min",
+                    "Idle Max"
+                ],
+                "unique_fields": [
+                    "Src IP",
+                    "Dst IP"
+                ],
+                "source_ip_field": "Src IP",
+                "destination_ip_field": "Dst IP",
+                "label_field": "RootIntent",
+                "benign_label": "Benign",
+                "dst_port": "Dst Port",
+                "background_ports": [0, 53, 67, 68, 111, 123, 161, 179, 389, 427, 520, 1723, 1900],
+                "control": ["Fwd IAT Mean"],
+                "source_bytes_field": "Total Fwd Vol",
+                "destination_bytes_field": "Total Bwd Vol",
+                "numeric_fields": ["Idle Mean"],
+                "string_fields": ["Src IP"],
+                "backward_packets_field": "Total Bwd Pkts",
+                "timestamp_field": "Process Time",
+                "timestamp_format": "%Y-%m-%d %H:%M:%S.%f %z UTC"
+            }
+        }
+    ],
+    "default_metadata": {
+        "drop_fields": ["Src Port", "Src IP", "Dst IP", "Process Time", "Intent", "Target", "From"],
+        "unique_fields": [],
+        "source_ip_field": "Src IP",
+        "destination_ip_field": "Dst IP",
+        "label_field": "RootIntent",
+        "benign_label": "Benign",
+        "dst_port": "Dst Port",
+        "background_ports": [0, 53, 67, 68, 111, 123, 161, 179, 389, 427, 520, 1723, 1900],
+        "control": ["Fwd IAT Mean"],
+        "source_bytes_field": "Total Fwd Vol",
+        "destination_bytes_field": "Total Bwd Vol",
+        "numeric_fields": ["Idle Mean"],
+        "string_fields": ["Src IP"],
+        "backward_packets_field": "Total Bwd Pkts",
+        "timestamp_field": "Process Time",
+        "timestamp_format": "%Y-%m-%d %H:%M:%S.%f %z UTC"
+    }
+}

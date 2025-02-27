@@ -1,0 +1,3 @@
+environment/wordpress/*
+environment/mysql/*
+data/pcap/*

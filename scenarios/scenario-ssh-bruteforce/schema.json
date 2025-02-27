@@ -1,0 +1,59 @@
+{
+    "containers": {
+        "server": {
+            "intent": "Benign",
+            "image": "forge/apache-ssh",
+            "volumes": ["{self.pwd}/data/server-output:/capture-results"],
+            "services": ["tcpdump"],
+            "networking": {
+                "network": "main",
+                "ip": "172.18.0.5"
+            }
+        },
+        "nmap-hydra": {
+            "intent": "Attack",
+            "image": "forge/hydra-nmap",
+            "volumes": ["{self.pwd}/data/hydra-output:/capture-results"],
+            "depends_on": ["server"],
+            "services": ["tcpdump"],
+            "networking": {
+                "network": "main",
+                "ip": "172.18.0.10"
+            }
+        },
+        "siege": {
+            "intent": "Stress",
+            "image": "forge/siege",
+            "depends_on": ["server"],
+            "services": ["tcpdump"],
+            "networking": {
+                "network": "main",
+                "ip": "172.18.0.8"
+            }
+        }
+    },
+    "services": {
+        "tcpdump": {
+            "image": "forge/tcpdump",
+            "command": "/usr/sbin/tcpdump 'not(ip6 or arp or (udp and (src port 5353 or src port 57621 or src port 1900)))' -v -w '/data/pcap/{self.name}.pcap'",
+            "down_command": "sh -c 'pkill tcpdump'",
+            "volumes": ["{self.pwd}/data/pcap:/data/pcap"],
+            "networking": {
+                "mode": "attach"
+            }
+        }
+    },
+    "networks": {
+        "main": {
+            "driver": "bridge",
+            "subnet": "172.18.0.0/16",
+            "base_conditions": {
+                "delay": 10,
+                "delay_deviation": 2,
+                "perc_loss": 2.0,
+                "distribution": "pareto",
+                "perc_corrupt": 0.2
+            }
+        }
+    }
+}

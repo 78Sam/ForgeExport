@@ -1,0 +1,14 @@
+root:
+- user: root
+- password: root
+- role: admin
+
+kathy:
+- user: kathy
+- password: kathyspassword
+- role: editor
+
+steve:
+- user: steve
+- password: steveiscool
+- role: subscriber

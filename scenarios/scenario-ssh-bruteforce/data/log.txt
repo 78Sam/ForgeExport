@@ -1,0 +1,336 @@
+15:13:26  [background]  Context.py.Context.initSchema()::               
+
+15:13:26  [info]        Context.py.Context.initSchema():197               Starting schema init
+
+15:13:26  [background]  Context.py.Context.validateSchema()::           
+
+15:13:26  [background]  Context.py.Context.readSchema()::               
+
+15:13:26  [background]  Validator.py.SchemaValidator.validateSchema():: 
+
+15:13:26  [background]  Validator.py.SchemaValidator.validateContainers():: 
+
+15:13:26  [background]  Validator.py.SchemaValidator.validateNetworks():: 
+
+15:13:26  [background]  Validator.py.SchemaValidator.validateServices():: 
+
+15:13:26  [background]  Context.py.Context.createNetworks()::           
+
+15:13:26  [background]  Context.py.Context.createContainers()::         
+
+15:13:26  [background]  Context.py.Context.createContainer()::          
+
+15:13:26  [info]        Context.py.Context.createContainer():119          Created directory at '/Users/sammccormack/Documents/Uni/Year4/Diss/ForgeExport/scenarios/scenario-ssh-bruteforce/data/pcap'
+
+15:13:26  [info]        Context.py.Context.createContainer():127          No network specified in container 'server-tcpdump'
+
+15:13:26  [background]  Container.py.Container.__init__():36             
+
+15:13:26  [ok]          Context.py.Context.createContainer():131          Created container server-tcpdump
+
+15:13:26  [background]  Context.py.Context.createContainer()::          
+
+15:13:26  [info]        Context.py.Context.createContainer():119          Created directory at '/Users/sammccormack/Documents/Uni/Year4/Diss/ForgeExport/scenarios/scenario-ssh-bruteforce/data/server-output'
+
+15:13:26  [background]  Container.py.Container.__init__():36             
+
+15:13:26  [background]  Container.py.Container.registerParent()::       
+
+15:13:26  [ok]          Context.py.Context.createContainer():131          Created container server
+
+15:13:26  [background]  Context.py.Context.createContainers()::         
+
+15:13:26  [background]  Context.py.Context.createContainer()::          
+
+15:13:26  [info]        Context.py.Context.createContainer():127          No network specified in container 'nmap-hydra-tcpdump'
+
+15:13:26  [background]  Container.py.Container.__init__():36             
+
+15:13:26  [ok]          Context.py.Context.createContainer():131          Created container nmap-hydra-tcpdump
+
+15:13:26  [background]  Context.py.Context.createContainer()::          
+
+15:13:26  [info]        Context.py.Context.createContainer():119          Created directory at '/Users/sammccormack/Documents/Uni/Year4/Diss/ForgeExport/scenarios/scenario-ssh-bruteforce/data/hydra-output'
+
+15:13:26  [background]  Container.py.Container.__init__():36             
+
+15:13:26  [background]  Container.py.Container.registerParent()::       
+
+15:13:26  [ok]          Context.py.Context.createContainer():131          Created container nmap-hydra
+
+15:13:26  [background]  Context.py.Context.createContainers()::         
+
+15:13:26  [background]  Context.py.Context.createContainer()::          
+
+15:13:26  [info]        Context.py.Context.createContainer():127          No network specified in container 'siege-tcpdump'
+
+15:13:26  [background]  Container.py.Container.__init__():36             
+
+15:13:26  [ok]          Context.py.Context.createContainer():131          Created container siege-tcpdump
+
+15:13:26  [background]  Context.py.Context.createContainer()::          
+
+15:13:26  [background]  Container.py.Container.__init__():36             
+
+15:13:26  [background]  Container.py.Container.registerParent()::       
+
+15:13:26  [ok]          Context.py.Context.createContainer():131          Created container siege
+
+15:13:26  [background]  Container.py.Container.registerParent()::       
+
+15:13:26  [background]  Container.py.Container.registerParent()::       
+
+15:13:26  [ok]          Context.py.Context.initSchema():252               Schema init success
+
+15:13:26  [background]  Controller.py.Controller.startNetworks()::      
+
+15:13:26  [background]  Network.py.Network.createNetwork()::            
+
+15:13:26  [info]        Network.py.Network.createNetwork():94            Network main running command docker network create -d bridge --subnet 172.18.0.0/16 main
+
+15:13:26  [background]  Network.py.Network.commit()::                   
+
+15:13:26  [ok]          Network.py.Network.createNetwork():107            Created network main successfully
+
+15:13:26  [background]  Controller.py.Controller.start()::              
+
+15:13:26  [background]  Container.py.Container.start()::                
+
+15:13:26  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:13:26  [info]        Container.py.Container.start():191                Starting Container: server docker run --name server -v {self.pwd}/data/server-output:/capture-results --ip 172.18.0.5 --network=main -itd forge/apache-ssh
+
+15:13:26  [background]  Container.py.Container.commit()::               
+
+15:13:26  [ok]          Container.py.Container.start():200                Started Container: server
+
+15:13:26  [background]  Container.py.Container.start()::                
+
+15:13:26  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:13:26  [info]        Container.py.Container.start():191                Starting Service: server-tcpdump docker run --name server-tcpdump -v {self.pwd}/data/pcap:/data/pcap --network=container:server -itd forge/tcpdump
+
+15:13:26  [background]  Container.py.Container.commit()::               
+
+15:13:26  [ok]          Container.py.Container.start():200                Started Service: server-tcpdump
+
+15:13:26  [background]  Container.py.Container.run()::                  
+
+15:13:26  [info]        Container.py.Container.run():240                  Service: server-tcpdump running command: /usr/sbin/tcpdump 'not(ip6 or arp or (udp and (src port 5353 or src port 57621 or src port 1900)))' -v -w '/data/pcap/{self.name}.pcap'
+
+15:13:26  [background]  Container.py.Container.commit()::               
+
+15:13:26  [ok]          Container.py.Container.run():243                  Service: server-tcpdump ran command successfully
+
+15:13:26  [background]  Container.py.Container.start()::                
+
+15:13:26  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:13:26  [background]  Container.py.Container.registerDependent()::    
+
+15:13:26  [info]        Container.py.Container.start():191                Starting Container: siege docker run --name siege --ip 172.18.0.8 --network=main -itd forge/siege
+
+15:13:26  [background]  Container.py.Container.commit()::               
+
+15:13:26  [ok]          Container.py.Container.start():200                Started Container: siege
+
+15:13:26  [background]  Container.py.Container.start()::                
+
+15:13:26  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:13:26  [info]        Container.py.Container.start():191                Starting Service: siege-tcpdump docker run --name siege-tcpdump -v {self.pwd}/data/pcap:/data/pcap --network=container:siege -itd forge/tcpdump
+
+15:13:26  [background]  Container.py.Container.commit()::               
+
+15:13:27  [ok]          Container.py.Container.start():200                Started Service: siege-tcpdump
+
+15:13:27  [background]  Container.py.Container.run()::                  
+
+15:13:27  [info]        Container.py.Container.run():240                  Service: siege-tcpdump running command: /usr/sbin/tcpdump 'not(ip6 or arp or (udp and (src port 5353 or src port 57621 or src port 1900)))' -v -w '/data/pcap/{self.name}.pcap'
+
+15:13:27  [background]  Container.py.Container.commit()::               
+
+15:13:27  [ok]          Container.py.Container.run():243                  Service: siege-tcpdump ran command successfully
+
+15:13:27  [background]  Container.py.Container.start()::                
+
+15:13:27  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:13:27  [background]  Container.py.Container.registerDependent()::    
+
+15:13:27  [info]        Container.py.Container.start():191                Starting Container: nmap-hydra docker run --name nmap-hydra -v {self.pwd}/data/hydra-output:/capture-results --ip 172.18.0.10 --network=main -itd forge/hydra-nmap
+
+15:13:27  [background]  Container.py.Container.commit()::               
+
+15:13:27  [ok]          Container.py.Container.start():200                Started Container: nmap-hydra
+
+15:13:27  [background]  Container.py.Container.start()::                
+
+15:13:27  [background]  Container.py.Container.checkParentsHealth()::   
+
+15:13:27  [info]        Container.py.Container.start():191                Starting Service: nmap-hydra-tcpdump docker run --name nmap-hydra-tcpdump -v {self.pwd}/data/pcap:/data/pcap --network=container:nmap-hydra -itd forge/tcpdump
+
+15:13:27  [background]  Container.py.Container.commit()::               
+
+15:13:27  [ok]          Container.py.Container.start():200                Started Service: nmap-hydra-tcpdump
+
+15:13:27  [background]  Container.py.Container.run()::                  
+
+15:13:27  [info]        Container.py.Container.run():240                  Service: nmap-hydra-tcpdump running command: /usr/sbin/tcpdump 'not(ip6 or arp or (udp and (src port 5353 or src port 57621 or src port 1900)))' -v -w '/data/pcap/{self.name}.pcap'
+
+15:13:27  [background]  Container.py.Container.commit()::               
+
+15:13:27  [ok]          Container.py.Container.run():243                  Service: nmap-hydra-tcpdump ran command successfully
+
+15:13:30  [background]  Container.py.Container.run()::                  
+
+15:13:30  [info]        Container.py.Container.run():240                  Container: siege running command: siege -c 50 -d 10 -t1H 172.18.0.5
+
+15:13:30  [background]  Container.py.Container.commit()::               
+
+15:13:30  [background]  Container.py.Container.markIntent()::           
+
+15:13:30  [ok]          Container.py.Container.run():243                  Container: siege ran command successfully
+
+15:13:33  [background]  Container.py.Container.run()::                  
+
+15:13:33  [info]        Container.py.Container.run():240                  Container: nmap-hydra running command: nmap 172.18.0.5 -oN capture-results/nmap.txt
+
+15:13:33  [background]  Container.py.Container.commit()::               
+
+15:13:33  [background]  Container.py.Container.markIntent()::           
+
+15:13:33  [ok]          Container.py.Container.run():243                  Container: nmap-hydra ran command successfully
+
+15:13:43  [background]  Container.py.Container.run()::                  
+
+15:13:43  [info]        Container.py.Container.run():240                  Container: nmap-hydra running command: hydra -l root -P passwords.txt 172.18.0.5 -o capture-results/hydra.txt -V -I ssh -t 10
+
+15:13:43  [background]  Container.py.Container.commit()::               
+
+15:15:25  [background]  Container.py.Container.markIntent()::           
+
+15:15:25  [ok]          Container.py.Container.run():243                  Container: nmap-hydra ran command successfully
+
+15:15:30  [background]  Container.py.Container.run()::                  
+
+15:15:30  [info]        Container.py.Container.run():240                  Container: nmap-hydra running command: sshpass -v -p root ssh -tt -o StrictHostKeyChecking=no root@172.18.0.5 'cd / && cat business_secrets.txt > capture-results/secrets.txt && exit'
+
+15:15:30  [background]  Container.py.Container.commit()::               
+
+15:15:31  [background]  Container.py.Container.markIntent()::           
+
+15:15:31  [ok]          Container.py.Container.run():243                  Container: nmap-hydra ran command successfully
+
+15:15:37  [background]  Controller.py.Controller.complete()::           
+
+15:15:37  [background]  Controller.py.Controller.tearDown()::           
+
+15:15:37  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:15:37  [background]  Container.py.Container.stop()::                 
+
+15:15:37  [background]  Container.py.Container.stop()::                 
+
+15:15:37  [background]  Container.py.Container.stop()::                 
+
+15:15:37  [background]  Container.py.Container.stop()::                 
+
+15:15:37  [background]  Container.py.Container.run()::                  
+
+15:15:37  [background]  Container.py.Container.run()::                  
+
+15:15:37  [info]        Container.py.Container.run():240                  Service: nmap-hydra-tcpdump running command: sh -c 'pkill tcpdump'
+
+15:15:37  [info]        Container.py.Container.run():240                  Service: siege-tcpdump running command: sh -c 'pkill tcpdump'
+
+15:15:37  [background]  Container.py.Container.commit()::               
+
+15:15:37  [background]  Container.py.Container.commit()::               
+
+15:15:37  [ok]          Container.py.Container.run():243                  Service: nmap-hydra-tcpdump ran command successfully
+
+15:15:37  [ok]          Container.py.Container.run():243                  Service: siege-tcpdump ran command successfully
+
+15:15:37  [info]        Container.py.Container.stop():315                 Stopping Service: nmap-hydra-tcpdump
+
+15:15:37  [info]        Container.py.Container.stop():315                 Stopping Service: siege-tcpdump
+
+15:15:37  [background]  Container.py.Container.commit()::               
+
+15:15:37  [background]  Container.py.Container.commit()::               
+
+15:15:39  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:15:41  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:15:43  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:15:45  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:15:47  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:15:47  [ok]          Container.py.Container.stop():321                 Stopped Service: nmap-hydra-tcpdump
+
+15:15:47  [info]        Container.py.Container.stop():315                 Stopping Container: nmap-hydra
+
+15:15:47  [background]  Container.py.Container.commit()::               
+
+15:15:47  [ok]          Container.py.Container.stop():321                 Stopped Service: siege-tcpdump
+
+15:15:47  [info]        Container.py.Container.stop():315                 Stopping Container: siege
+
+15:15:47  [background]  Container.py.Container.commit()::               
+
+15:15:47  [ok]          Container.py.Container.stop():321                 Stopped Container: siege
+
+15:15:49  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:15:51  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:15:53  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:15:55  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:15:57  [info]        Controller.py.Controller.tearDown():100           Waiting for threads to finish
+
+15:15:57  [ok]          Container.py.Container.stop():321                 Stopped Container: nmap-hydra
+
+15:15:59  [background]  Container.py.Container.stop()::                 
+
+15:15:59  [background]  Container.py.Container.stop()::                 
+
+15:15:59  [background]  Container.py.Container.run()::                  
+
+15:15:59  [info]        Container.py.Container.run():240                  Service: server-tcpdump running command: sh -c 'pkill tcpdump'
+
+15:15:59  [background]  Container.py.Container.commit()::               
+
+15:15:59  [ok]          Container.py.Container.run():243                  Service: server-tcpdump ran command successfully
+
+15:15:59  [info]        Container.py.Container.stop():315                 Stopping Service: server-tcpdump
+
+15:15:59  [background]  Container.py.Container.commit()::               
+
+15:16:09  [ok]          Container.py.Container.stop():321                 Stopped Service: server-tcpdump
+
+15:16:09  [info]        Container.py.Container.stop():315                 Stopping Container: server
+
+15:16:09  [background]  Container.py.Container.commit()::               
+
+15:16:19  [ok]          Container.py.Container.stop():321                 Stopped Container: server
+
+15:16:19  [ok]          Controller.py.Controller.tearDown():111           Teardown took 0.71 minutes
+
+15:16:19  [background]  Controller.py.Controller.removeNetworks()::     
+
+15:16:19  [background]  Network.py.Network.removeNetwork()::            
+
+15:16:19  [background]  Network.py.Network.commit()::                   
+
+15:16:19  [ok]          Network.py.Network.removeNetwork():117            Removed network main successfully
+
+15:16:19  [background]  Controller.py.Controller.writeIntents()::       
+
+15:16:19  [background]  Controller.py.Controller.writeTrail()::         
+

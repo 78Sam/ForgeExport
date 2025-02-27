@@ -1,0 +1,44 @@
+{
+    "containers": {
+        "nginx": {
+            "enabled": true,
+            "intent": "Benign",
+            "image": "forge/nginx",
+            "volumes": ["{self.pwd}/environment:/usr/share/nginx/html"],
+            "services": ["tcpdump"],
+            "networking": {
+                "network": "main",
+                "ip": "192.168.0.5",
+                "ports": "8080:80"
+            }
+        },
+        "siege": {
+            "enabled": true,
+            "clones": 2,
+            "intent": "Attack",
+            "image": "forge/siege",
+            "services": ["tcpdump"],
+            "depends_on": ["nginx"],
+            "networking": {
+                "network": "main"
+            }
+        }
+    },
+    "services": {
+        "tcpdump": {
+            "image": "forge/tcpdump",
+            "command": "/usr/sbin/tcpdump 'not(ip6 or arp or (udp and (src port 5353 or src port 57621 or src port 1900)))' -v -w '/data/pcap/{self.name}.pcap'",
+            "down_command": "sh -c 'pkill tcpdump'",
+            "volumes": ["{self.pwd}/data/pcap:/data/pcap"],
+            "networking": {
+                "mode": "attach"
+            }
+        }
+    },
+    "networks": {
+        "main": {
+            "driver": "bridge",
+            "subnet": "192.168.0.0/24"
+        }
+    }
+}
