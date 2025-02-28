@@ -1,8 +1,0 @@
-{
-	"server-tcpdump": [],
-	"server": [],
-	"nmap-hydra-tcpdump": [],
-	"nmap-hydra": [(1740669213.53529, 'Attack', 'Nmap', 'server'), (1740669223.8228621, 'Attack', 'Hydra', 'server'), (1740669330.879824, 'Attack', 'SSH', 'server')],
-	"siege-tcpdump": [],
-	"siege": [(1740669210.427352, 'Benign', 'Stress', 'server')],
-}
