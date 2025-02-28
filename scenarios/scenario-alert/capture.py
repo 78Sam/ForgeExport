@@ -130,11 +130,11 @@ def scenario(
             ip="172.18.0.6"
         )
 
-        # networks["wan"].setBaseConditions()
-        # networks["lan"].setBaseConditions()
+        networks["wan"].setBaseConditions()
+        networks["lan"].setBaseConditions()
 
-        networks["wan"].disableConditions()
-        networks["lan"].disableConditions()
+        # networks["wan"].disableConditions()
+        # networks["lan"].disableConditions()
 
         for container in containers.values():
 

@@ -17,6 +17,18 @@ This project was built to replicate the functionality of DetGen, another synthet
 
 If you have any: questions, ideas, improvements, examples of your benefit or use, please get in touch! You can find me here: [https://sam-mccormack.co.uk](https://sam-mccormack.co.uk)
 
+## Requirements
+
+It is recommended to use Linux for this framework, although I can run most scenarios on a Macbook M2 (excluding flow creation and network condition application)
+
+- Python 3.10
+- Docker
+- tc-netem package if you wish to do network condition application
+
+I have also included the flowtbag source code (PCAP to flow conversion tool) at `flowtbag` to recompile yourself if `tools/flowtbag` doesn't work.
+
+There is also a simple shell script to create a Python venv for you to use at `setup.sh`.
+
 ## Contents
 
 - [The Framework](#the-framework)
@@ -443,6 +455,6 @@ Whilst I did not explain testing this scenario, I have run testing on this scena
 
 # A much more complicated scenario
 
-I have also included another scenario under `scenarios/scenario-alert` which is my simplified re-creation of [This dataset](https://ieeexplore.ieee.org/document/9866880/). Im not going to explain all of its workings here but it might serve as a useful reference for how you can use Forge to create some more complicated network traffic.
-
-NB. This scenario is much more complicated and as such may be a bit buggy at times, or not particularly well refined.
+I've included two other scenarios, one is slightly more complex and the other is much more complex:
+- `scenarios/scenario-ssh-bruteforce` (Medium complexity) NMAP, Siege, Hydra ssh password bruteforce, sensitive documents exfil
+- `scenarios/scenario-alert` (Complex) NMAP, WPScan, Dirb, Wordpress site RCE dumps wp-config.php and the users database table, along with background traffic generation. This is a simplified recreation of [This dataset](https://ieeexplore.ieee.org/document/9866880/). This scenario is much more complicated and as such may be a bit buggy at times, or not particularly well refined.
