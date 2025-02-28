@@ -27,6 +27,7 @@ class Network:
         self.logger: Logger = logger
         self.sandbox: bool = sandbox
         self.requires_sudo: bool = requires_sudo
+        self.conditions_enabled: bool = True
 
         self.network_id: str = ""
 
@@ -45,6 +46,11 @@ class Network:
 
         self.veth_recompute_time: float = -1.0
 
+        return
+    
+    @logit
+    def disableConditions(self) -> None:
+        self.conditions_enabled = False
         return
 
     @logit
@@ -284,7 +290,7 @@ class Network:
 
         # Log the network condition and return if in sandbox mode
 
-        if self.sandbox:
+        if self.sandbox or not self.conditions_enabled:
             self.logNetworkConditions(container_name, delay, delay_deviation, perc_loss, distribution, perc_corrupt)
             return True
         

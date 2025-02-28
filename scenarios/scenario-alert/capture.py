@@ -130,8 +130,11 @@ def scenario(
             ip="172.18.0.6"
         )
 
-        networks["wan"].setBaseConditions()
-        networks["lan"].setBaseConditions()
+        # networks["wan"].setBaseConditions()
+        # networks["lan"].setBaseConditions()
+
+        networks["wan"].disableConditions()
+        networks["lan"].disableConditions()
 
         for container in containers.values():
 
@@ -172,7 +175,7 @@ def scenario(
         #! Start multithreaded requests
 
         threads: dict[str, list[Thread, Traffic]] = {}
-        for x in range(10):
+        for x in range(5):
             container_name: str = f"requests-{x}"
             inst = Traffic(
                 container=containers[container_name],
@@ -250,11 +253,11 @@ def scenario(
             trail="data/trail.sh",
             intents="data/intents.txt",
             skip_teardown=True,
-            skip_flows=False,
             skip_intents=False,
             skip_trail=False,
-            skip_tests=False,
-            skip_webpage=False
+            skip_flows=True,
+            skip_tests=True,
+            skip_webpage=True
         )
 
         # controller.markFlows()
@@ -286,18 +289,18 @@ def main() -> None:
     containers: dict[str, Container] = context.getContainers()
     networks = context.getNetworks()
 
-    # scenario(
-    #     controller=controller,
-    #     containers=containers,
-    #     networks=networks,
-    #     pwd=CAPTURE_DIR,
-    #     logger=logger,
-    #     sandbox=sandbox
-    # )
+    scenario(
+        controller=controller,
+        containers=containers,
+        networks=networks,
+        pwd=CAPTURE_DIR,
+        logger=logger,
+        sandbox=sandbox
+    )
 
-    controller.executeTests()
+    # controller.executeTests()
 
-    createWebpage(context=context, logger=logger, pwd=CAPTURE_DIR)
+    # createWebpage(context=context, logger=logger, pwd=CAPTURE_DIR)
 
     return
 
