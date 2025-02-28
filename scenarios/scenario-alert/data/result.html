@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Test results for capture-alert</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        <style>
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            :root {
+                --black: rgb(15, 15, 15);
+                --light-black: rgb(46, 46, 46);
+                --light-grey: rgb(206, 206, 206);
+                --green: rgb(89, 207, 89);
+                --link-blue: rgb(25, 154, 234);
+            }
+
+            body {
+                /* background-color: var(--black); */
+                background-color: white;
+                scroll-behavior: smooth;
+            }
+
+            main {
+                box-sizing: border-box;
+                padding: 50px;
+            }
+
+            nav {
+                width: 100%;
+                height: 50px;
+                background-color: white;
+                z-index: 999;
+                position: fixed;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+            }
+
+            nav a {
+                color: var(--link-blue);
+                text-decoration: none;
+            }
+
+            /* Text */
+
+            h1, h2, h3, p, a {
+                font-family: "Poppins", serif;
+                font-weight: 600;
+                font-style: normal;
+            }
+
+            .flex {
+                display: flex;
+                align-items: center;
+            }
+
+            .data-section h1,
+            .data-section h2,
+            .data-section h3,
+            .data-section p,
+            .data-section a {
+                color: white;
+                font-weight: 900;
+            }
+
+            .data-section {
+                width: 100%;
+                box-sizing: border-box;
+                padding: 50px;
+                margin-bottom: 50px;
+                border-radius: 15px;
+                background-color: var(--light-black);
+                display: flex;
+                flex-direction: column;
+            }
+
+            .data-section:last-child {
+                margin-bottom: 0px;
+            }
+
+            .datapoint {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 5px;
+                /* border-bottom: 1px solid rgba(206, 206, 206, 0.3); */
+            }
+
+            .datapoint .hint {
+                font-family: "Poppins", serif;
+                font-weight: 300;
+                font-style: normal;
+                color: var(--light-grey);
+                margin-bottom: 10px;
+            }
+
+            .datapoint span {
+                display: flex;
+                align-items: center;
+            }
+
+            .data-section h1 {
+                text-decoration: underline;
+                font-size: 40px;
+                margin-bottom: 30px;
+            }
+
+            .datapoint span h2 {
+                margin-right: 20px;
+            }
+
+            .datapoint .number {
+                color: var(--green);
+            }
+
+        </style>
+
+    </head>
+    <body>
+
+        <nav>
+				<a href='#data-section-general'>General</a>
+				<a href='#data-section-CosineSniff'>CosineSniff</a>
+				<a href='#data-section-NearestNeighboursSniff'>NearestNeighboursSniff</a>
+				<a href='#data-section-BackwardPacketsSniff'>BackwardPacketsSniff</a>
+				<a href='#data-section-PortSniff'>PortSniff</a>
+				<a href='#data-section-images'>Images</a>
+
+        </nav>
+
+        <div style="height: 50px;"></div>
+
+        <main>
+
+            <div class="flex" style="margin-bottom: 50px;">
+                <h1 style="margin-right: 20px;">capture-alert</h1>
+                <p>18:04 16-02-2025</p>
+            </div>
+    
+            <div class="data-section" id="data-section-general">
+                <h1>
+                    Overview
+                </h1>
+                <div class="datapoint">
+                    <span>
+                        <h2>Total Flows</h2>
+                        <h2 class="number">19434</h2>
+                    </span>
+                    <p class="hint">Total number of flows across all files</p>
+                </div>
+                <div class="datapoint">
+                    <span>
+                        <h2>Total IPs</h2>
+                        <h2 class="number">138</h2>
+                    </span>
+                    <p class="hint">Total number of unique IPv4 addresses across all files</p>
+                </div>
+                <div class="datapoint">
+                    <span>
+                        <h2>Total Ports</h2>
+                        <h2 class="number">6438</h2>
+                    </span>
+                    <p class="hint">Total number of unique ports across all files</p>
+                </div>
+                <div class="datapoint">
+                    <span>
+                        <h2>Total Attack Flows</h2>
+                        <h2 class="number">14177</h2>
+                    </span>
+                    <p class="hint">Total number of flows labelled 'Attack' across all files</p>
+                </div>
+                <div class="datapoint">
+                    <span>
+                        <h2>Total Benign Flows</h2>
+                        <h2 class="number">2647</h2>
+                    </span>
+                    <p class="hint">Total number of flows labelled 'Benign' across all files</p>
+                </div>
+                <div class="datapoint">
+                    <span>
+                        <h2>Total Unlabelled Flows</h2>
+                        <h2 class="number">2610</h2>
+                    </span>
+                    <p class="hint">Total number of flows with no label across all files</p>
+                </div>
+                <div class="datapoint">
+                    <span>
+                        <h2>Total Attack Descriptors</h2>
+                        <h2 class="number">5</h2>
+                    </span>
+                    <p class="hint">Total number of unique intents across all files</p>
+                </div>
+                <div class="datapoint">
+                    <span>
+                        <h2>Total Attack Targets</h2>
+                        <h2 class="number">1</h2>
+                    </span>
+                    <p class="hint">Total number of unique targets across all files</p>
+                </div>
+            </div>
+
+			<div class='data-section' id='data-section-CosineSniff'>
+				<h1>
+				CosineSniff
+			</h1>
+				<div class='datapoint'>
+					<span>
+						<h2>Cosine Similarities</h2>
+						<h2 class='number'>[0.4140104002282743, 0.9999999339659478]</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Cosine Weighted Average</h2>
+						<h2 class='number'>0.42909203765744763</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Largest Cluster Percentage</h2>
+						<h2 class='number'>0.9742629576795054</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Cutoff Percentages</h2>
+						<h2 class='number'>{'1': 0.401, '2': 1.0}</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Cluster Sizes</h2>
+						<h2 class='number'>[16391, 433]</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+			</div>
+
+			<div class='data-section' id='data-section-NearestNeighboursSniff'>
+				<h1>
+				NearestNeighboursSniff
+			</h1>
+				<div class='datapoint'>
+					<span>
+						<h2>Mislabelled</h2>
+						<h2 class='number'>2648</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Percentage</h2>
+						<h2 class='number'>0.15739419876367094</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+			</div>
+
+			<div class='data-section' id='data-section-BackwardPacketsSniff'>
+				<h1>
+				BackwardPacketsSniff
+			</h1>
+				<div class='datapoint'>
+					<span>
+						<h2>Percentage of Flows with Zero Backwards Packets</h2>
+						<h2 class='number'>0.2137264583480285</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Total Number of Flows with Zero Backwards Packets</h2>
+						<h2 class='number'>14177</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+			</div>
+
+			<div class='data-section' id='data-section-PortSniff'>
+				<h1>
+				PortSniff
+			</h1>
+				<div class='datapoint'>
+					<span>
+						<h2>Background Ports In Mal Class</h2>
+						<h2 class='number'>91</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Null Ports in Mal Class</h2>
+						<h2 class='number'>0</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Empty Ports in Mal Class</h2>
+						<h2 class='number'>0</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Background Ports In Mal Class Percentage</h2>
+						<h2 class='number'>0.0064188474289341895</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Background, Null & Empty Ports in Mal Class</h2>
+						<h2 class='number'>91</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Background, Null & Empty Ports in Mal Class Percentage</h2>
+						<h2 class='number'>0.0064188474289341895</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+			</div>
+
+
+		<div class='data-section' id='data-section-images'>
+				<h1>
+				Images
+			</h1>
+				<div class='datapoint'>
+					<span>
+						<h2>router</h2>
+					</span>
+					<p class='hint'>detgen/alpine</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>wordpress-tcpdump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>wordpress</h2>
+					</span>
+					<p class='hint'>detgen/wordpress</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>mysql_server-tcpdump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>mysql_server</h2>
+					</span>
+					<p class='hint'>detgen/mysql-wordpress</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>admin-requests-requests-dump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>admin-requests</h2>
+					</span>
+					<p class='hint'>detgen/python-requests</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>exploit-tcpdump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>exploit</h2>
+					</span>
+					<p class='hint'>detgen/exploits</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-0-requests-dump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-0</h2>
+					</span>
+					<p class='hint'>detgen/python-requests</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-1-requests-dump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-1</h2>
+					</span>
+					<p class='hint'>detgen/python-requests</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-2-requests-dump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-2</h2>
+					</span>
+					<p class='hint'>detgen/python-requests</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-3-requests-dump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-3</h2>
+					</span>
+					<p class='hint'>detgen/python-requests</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-4-requests-dump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-4</h2>
+					</span>
+					<p class='hint'>detgen/python-requests</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-5-requests-dump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-5</h2>
+					</span>
+					<p class='hint'>detgen/python-requests</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-6-requests-dump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-6</h2>
+					</span>
+					<p class='hint'>detgen/python-requests</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-7-requests-dump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-7</h2>
+					</span>
+					<p class='hint'>detgen/python-requests</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-8-requests-dump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-8</h2>
+					</span>
+					<p class='hint'>detgen/python-requests</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-9-requests-dump</h2>
+					</span>
+					<p class='hint'>detgen/tcpdump</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>requests-9</h2>
+					</span>
+					<p class='hint'>detgen/python-requests</p>
+				</div>
+			</div>
+ 
+        </main>
+        
+    </body>
+</html>
