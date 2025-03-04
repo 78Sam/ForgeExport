@@ -14,9 +14,9 @@ path = [
 ]
 
 for _ in range(randint(2, 10)):
+    to_get = f"{URL}{choice(path)}"
     try:
-        resp = requests.get(url=f"{URL}{choice(path)}", timeout=5)
+        resp = requests.get(url=to_get, timeout=5)
     except Exception as e:
-        print("Requests failed")
-    # print(resp.text)
+        print(f"\nRequest failed for URL {to_get}\n")
     sleep(2+randint(0, 2)+random())

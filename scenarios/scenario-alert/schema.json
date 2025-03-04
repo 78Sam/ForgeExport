@@ -1,6 +1,7 @@
 {
     "containers": {
         "router": {
+            "enabled": false,
             "intent": "Benign",
             "image": "forge/alpine",
             "params": "--cap-add=NET_ADMIN",
@@ -35,11 +36,11 @@
             } 
         },
         "phpmyadmin": {
+            "enabled": true,
            "intent": "Benign",
             "image": "forge/phpmyadmin",
             "depends_on": ["mysql_server", "router"],
             "params": "--link mysql_server:db -e MYSQL_ROOT_PASSWORD=root --cap-add=NET_ADMIN",
-            "enabled": false,
             "networking": {
                 "network": "lan",
                 "ip": "172.18.0.4",
@@ -47,32 +48,33 @@
             } 
         },
         "admin-requests": {
+            "enabled": false,
             "intent": "Benign",
             "image": "forge/python-requests",
             "params": "--cap-add=NET_ADMIN",
             "volumes": ["{self.pwd}/environment/scripts:/usr/share/scripts"],
             "depends_on": ["wordpress", "exploit", "router"],
             "services": ["requests-dump"],
-            "enabled": true,
             "networking": {
                 "network": "lan",
                 "ip": "172.18.0.5"
             }
         },
         "exploit": {
+            "enabled": false,
             "intent": "Attack",
             "image": "forge/exploits",
             "params": "--cap-add=NET_ADMIN",
             "volumes": ["{self.pwd}/data/exploit:/usr/share/capture", "{self.pwd}/environment/scripts:/usr/share/scripts"],
             "depends_on": ["wordpress", "router"],
             "services": ["tcpdump"],
-            "enabled": true,
             "networking": {
                 "network": "wan",
                 "ip": "192.168.0.5"
             }
         },
         "requests": {
+            "enabled": false,
             "intent": "Attack",
             "image": "forge/python-requests",
             "params": "--cap-add=NET_ADMIN",
