@@ -142,10 +142,12 @@ class Logger:
         with self.lock:
 
             if self.rolling_messages:
-                if self.filter and type in self.filter:
-                    print(new_log)
-                elif self.interesting_only and type not in {"normal", "background"}:
-                    print(new_log)
+                if self.filter:
+                    if type in self.filter:
+                        print(new_log)
+                elif self.interesting_only:
+                    if type not in {"normal", "background"}:
+                        print(new_log)
                 elif self.background or type != "background":
                     print(new_log)
                 else:

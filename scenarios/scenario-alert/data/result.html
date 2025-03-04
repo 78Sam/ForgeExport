@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Test results for capture-alert</title>
+        <title>Test results for scenario-alert</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,10 +129,10 @@
 
         <nav>
 				<a href='#data-section-general'>General</a>
-				<a href='#data-section-CosineSniff'>CosineSniff</a>
 				<a href='#data-section-NearestNeighboursSniff'>NearestNeighboursSniff</a>
-				<a href='#data-section-BackwardPacketsSniff'>BackwardPacketsSniff</a>
 				<a href='#data-section-PortSniff'>PortSniff</a>
+				<a href='#data-section-BackwardPacketsSniff'>BackwardPacketsSniff</a>
+				<a href='#data-section-CosineSniff'>CosineSniff</a>
 				<a href='#data-section-images'>Images</a>
 
         </nav>
@@ -142,8 +142,8 @@
         <main>
 
             <div class="flex" style="margin-bottom: 50px;">
-                <h1 style="margin-right: 20px;">capture-alert</h1>
-                <p>18:04 16-02-2025</p>
+                <h1 style="margin-right: 20px;">scenario-alert</h1>
+                <p>14:04 04-03-2025</p>
             </div>
     
             <div class="data-section" id="data-section-general">
@@ -153,42 +153,42 @@
                 <div class="datapoint">
                     <span>
                         <h2>Total Flows</h2>
-                        <h2 class="number">19434</h2>
+                        <h2 class="number">17055</h2>
                     </span>
                     <p class="hint">Total number of flows across all files</p>
                 </div>
                 <div class="datapoint">
                     <span>
                         <h2>Total IPs</h2>
-                        <h2 class="number">138</h2>
+                        <h2 class="number">107</h2>
                     </span>
                     <p class="hint">Total number of unique IPv4 addresses across all files</p>
                 </div>
                 <div class="datapoint">
                     <span>
                         <h2>Total Ports</h2>
-                        <h2 class="number">6438</h2>
+                        <h2 class="number">6152</h2>
                     </span>
                     <p class="hint">Total number of unique ports across all files</p>
                 </div>
                 <div class="datapoint">
                     <span>
                         <h2>Total Attack Flows</h2>
-                        <h2 class="number">14177</h2>
+                        <h2 class="number">13544</h2>
                     </span>
                     <p class="hint">Total number of flows labelled 'Attack' across all files</p>
                 </div>
                 <div class="datapoint">
                     <span>
                         <h2>Total Benign Flows</h2>
-                        <h2 class="number">2647</h2>
+                        <h2 class="number">1913</h2>
                     </span>
                     <p class="hint">Total number of flows labelled 'Benign' across all files</p>
                 </div>
                 <div class="datapoint">
                     <span>
                         <h2>Total Unlabelled Flows</h2>
-                        <h2 class="number">2610</h2>
+                        <h2 class="number">1598</h2>
                     </span>
                     <p class="hint">Total number of flows with no label across all files</p>
                 </div>
@@ -208,47 +208,6 @@
                 </div>
             </div>
 
-			<div class='data-section' id='data-section-CosineSniff'>
-				<h1>
-				CosineSniff
-			</h1>
-				<div class='datapoint'>
-					<span>
-						<h2>Cosine Similarities</h2>
-						<h2 class='number'>[0.4140104002282743, 0.9999999339659478]</h2>
-					</span>
-					<p class='hint'>Tooltip</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>Cosine Weighted Average</h2>
-						<h2 class='number'>0.42909203765744763</h2>
-					</span>
-					<p class='hint'>Tooltip</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>Largest Cluster Percentage</h2>
-						<h2 class='number'>0.9742629576795054</h2>
-					</span>
-					<p class='hint'>Tooltip</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>Cutoff Percentages</h2>
-						<h2 class='number'>{'1': 0.401, '2': 1.0}</h2>
-					</span>
-					<p class='hint'>Tooltip</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>Cluster Sizes</h2>
-						<h2 class='number'>[16391, 433]</h2>
-					</span>
-					<p class='hint'>Tooltip</p>
-				</div>
-			</div>
-
 			<div class='data-section' id='data-section-NearestNeighboursSniff'>
 				<h1>
 				NearestNeighboursSniff
@@ -256,34 +215,14 @@
 				<div class='datapoint'>
 					<span>
 						<h2>Mislabelled</h2>
-						<h2 class='number'>2648</h2>
+						<h2 class='number'>1914</h2>
 					</span>
 					<p class='hint'>Tooltip</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>Percentage</h2>
-						<h2 class='number'>0.15739419876367094</h2>
-					</span>
-					<p class='hint'>Tooltip</p>
-				</div>
-			</div>
-
-			<div class='data-section' id='data-section-BackwardPacketsSniff'>
-				<h1>
-				BackwardPacketsSniff
-			</h1>
-				<div class='datapoint'>
-					<span>
-						<h2>Percentage of Flows with Zero Backwards Packets</h2>
-						<h2 class='number'>0.2137264583480285</h2>
-					</span>
-					<p class='hint'>Tooltip</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>Total Number of Flows with Zero Backwards Packets</h2>
-						<h2 class='number'>14177</h2>
+						<h2 class='number'>0.12382739212007504</h2>
 					</span>
 					<p class='hint'>Tooltip</p>
 				</div>
@@ -296,7 +235,7 @@
 				<div class='datapoint'>
 					<span>
 						<h2>Background Ports In Mal Class</h2>
-						<h2 class='number'>91</h2>
+						<h2 class='number'>117</h2>
 					</span>
 					<p class='hint'>Tooltip</p>
 				</div>
@@ -317,21 +256,82 @@
 				<div class='datapoint'>
 					<span>
 						<h2>Background Ports In Mal Class Percentage</h2>
-						<h2 class='number'>0.0064188474289341895</h2>
+						<h2 class='number'>0.008638511518015358</h2>
 					</span>
 					<p class='hint'>Tooltip</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>Background, Null & Empty Ports in Mal Class</h2>
-						<h2 class='number'>91</h2>
+						<h2 class='number'>117</h2>
 					</span>
 					<p class='hint'>Tooltip</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>Background, Null & Empty Ports in Mal Class Percentage</h2>
-						<h2 class='number'>0.0064188474289341895</h2>
+						<h2 class='number'>0.008638511518015358</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+			</div>
+
+			<div class='data-section' id='data-section-BackwardPacketsSniff'>
+				<h1>
+				BackwardPacketsSniff
+			</h1>
+				<div class='datapoint'>
+					<span>
+						<h2>Percentage of Flows with Zero Backwards Packets</h2>
+						<h2 class='number'>0.17572356763142352</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Total Number of Flows with Zero Backwards Packets</h2>
+						<h2 class='number'>13544</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+			</div>
+
+			<div class='data-section' id='data-section-CosineSniff'>
+				<h1>
+				CosineSniff
+			</h1>
+				<div class='datapoint'>
+					<span>
+						<h2>Cosine Similarities</h2>
+						<h2 class='number'>[0.45438761215512685, 0.9999999368752824]</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Cosine Weighted Average</h2>
+						<h2 class='number'>0.4632122923116927</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Largest Cluster Percentage</h2>
+						<h2 class='number'>0.9838260982079317</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Cutoff Percentages</h2>
+						<h2 class='number'>{'1': 0.44, '2': 1.0}</h2>
+					</span>
+					<p class='hint'>Tooltip</p>
+				</div>
+				<div class='datapoint'>
+					<span>
+						<h2>Cluster Sizes</h2>
+						<h2 class='number'>[15207, 250]</h2>
 					</span>
 					<p class='hint'>Tooltip</p>
 				</div>
@@ -346,175 +346,115 @@
 					<span>
 						<h2>router</h2>
 					</span>
-					<p class='hint'>detgen/alpine</p>
+					<p class='hint'>forge/alpine</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>wordpress-tcpdump</h2>
 					</span>
-					<p class='hint'>detgen/tcpdump</p>
+					<p class='hint'>forge/tcpdump</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>wordpress</h2>
 					</span>
-					<p class='hint'>detgen/wordpress</p>
+					<p class='hint'>forge/wordpress</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>mysql_server-tcpdump</h2>
 					</span>
-					<p class='hint'>detgen/tcpdump</p>
+					<p class='hint'>forge/tcpdump</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>mysql_server</h2>
 					</span>
-					<p class='hint'>detgen/mysql-wordpress</p>
+					<p class='hint'>forge/mysql-wordpress</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>admin-requests-requests-dump</h2>
 					</span>
-					<p class='hint'>detgen/tcpdump</p>
+					<p class='hint'>forge/tcpdump</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>admin-requests</h2>
 					</span>
-					<p class='hint'>detgen/python-requests</p>
+					<p class='hint'>forge/python-requests</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>exploit-tcpdump</h2>
 					</span>
-					<p class='hint'>detgen/tcpdump</p>
+					<p class='hint'>forge/tcpdump</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>exploit</h2>
 					</span>
-					<p class='hint'>detgen/exploits</p>
+					<p class='hint'>forge/exploits</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>requests-0-requests-dump</h2>
 					</span>
-					<p class='hint'>detgen/tcpdump</p>
+					<p class='hint'>forge/tcpdump</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>requests-0</h2>
 					</span>
-					<p class='hint'>detgen/python-requests</p>
+					<p class='hint'>forge/python-requests</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>requests-1-requests-dump</h2>
 					</span>
-					<p class='hint'>detgen/tcpdump</p>
+					<p class='hint'>forge/tcpdump</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>requests-1</h2>
 					</span>
-					<p class='hint'>detgen/python-requests</p>
+					<p class='hint'>forge/python-requests</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>requests-2-requests-dump</h2>
 					</span>
-					<p class='hint'>detgen/tcpdump</p>
+					<p class='hint'>forge/tcpdump</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>requests-2</h2>
 					</span>
-					<p class='hint'>detgen/python-requests</p>
+					<p class='hint'>forge/python-requests</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>requests-3-requests-dump</h2>
 					</span>
-					<p class='hint'>detgen/tcpdump</p>
+					<p class='hint'>forge/tcpdump</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>requests-3</h2>
 					</span>
-					<p class='hint'>detgen/python-requests</p>
+					<p class='hint'>forge/python-requests</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>requests-4-requests-dump</h2>
 					</span>
-					<p class='hint'>detgen/tcpdump</p>
+					<p class='hint'>forge/tcpdump</p>
 				</div>
 				<div class='datapoint'>
 					<span>
 						<h2>requests-4</h2>
 					</span>
-					<p class='hint'>detgen/python-requests</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>requests-5-requests-dump</h2>
-					</span>
-					<p class='hint'>detgen/tcpdump</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>requests-5</h2>
-					</span>
-					<p class='hint'>detgen/python-requests</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>requests-6-requests-dump</h2>
-					</span>
-					<p class='hint'>detgen/tcpdump</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>requests-6</h2>
-					</span>
-					<p class='hint'>detgen/python-requests</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>requests-7-requests-dump</h2>
-					</span>
-					<p class='hint'>detgen/tcpdump</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>requests-7</h2>
-					</span>
-					<p class='hint'>detgen/python-requests</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>requests-8-requests-dump</h2>
-					</span>
-					<p class='hint'>detgen/tcpdump</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>requests-8</h2>
-					</span>
-					<p class='hint'>detgen/python-requests</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>requests-9-requests-dump</h2>
-					</span>
-					<p class='hint'>detgen/tcpdump</p>
-				</div>
-				<div class='datapoint'>
-					<span>
-						<h2>requests-9</h2>
-					</span>
-					<p class='hint'>detgen/python-requests</p>
+					<p class='hint'>forge/python-requests</p>
 				</div>
 			</div>
  

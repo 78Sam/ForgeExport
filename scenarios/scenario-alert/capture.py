@@ -255,9 +255,9 @@ def scenario(
             skip_teardown=True,
             skip_intents=False,
             skip_trail=False,
-            skip_flows=True,
-            skip_tests=True,
-            skip_webpage=True
+            skip_flows=False,
+            skip_tests=False,
+            skip_webpage=False
         )
 
         # controller.markFlows()
@@ -289,18 +289,20 @@ def main() -> None:
     containers: dict[str, Container] = context.getContainers()
     networks = context.getNetworks()
 
-    scenario(
-        controller=controller,
-        containers=containers,
-        networks=networks,
-        pwd=CAPTURE_DIR,
-        logger=logger,
-        sandbox=sandbox
-    )
+    # scenario(
+    #     controller=controller,
+    #     containers=containers,
+    #     networks=networks,
+    #     pwd=CAPTURE_DIR,
+    #     logger=logger,
+    #     sandbox=sandbox
+    # )
 
-    # controller.executeTests()
+    controller.markFlows()
 
-    # createWebpage(context=context, logger=logger, pwd=CAPTURE_DIR)
+    controller.executeTests()
+
+    createWebpage(context=context, logger=logger, pwd=CAPTURE_DIR)
 
     return
 

@@ -1,7 +1,7 @@
 {
     "containers": {
         "router": {
-            "enabled": false,
+            "enabled": true,
             "intent": "Benign",
             "image": "forge/alpine",
             "params": "--cap-add=NET_ADMIN",
@@ -36,7 +36,7 @@
             } 
         },
         "phpmyadmin": {
-            "enabled": true,
+            "enabled": false,
            "intent": "Benign",
             "image": "forge/phpmyadmin",
             "depends_on": ["mysql_server", "router"],
@@ -48,7 +48,7 @@
             } 
         },
         "admin-requests": {
-            "enabled": false,
+            "enabled": true,
             "intent": "Benign",
             "image": "forge/python-requests",
             "params": "--cap-add=NET_ADMIN",
@@ -61,7 +61,7 @@
             }
         },
         "exploit": {
-            "enabled": false,
+            "enabled": true,
             "intent": "Attack",
             "image": "forge/exploits",
             "params": "--cap-add=NET_ADMIN",
@@ -74,7 +74,7 @@
             }
         },
         "requests": {
-            "enabled": false,
+            "enabled": true,
             "intent": "Attack",
             "image": "forge/python-requests",
             "params": "--cap-add=NET_ADMIN",

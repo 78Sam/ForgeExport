@@ -10,7 +10,7 @@ path = [
     "/?p=1",
     "/wp-admin",
     "/" + "".join([choice(alpha) for _ in range(randint(1, 12))]),
-    "/?page_id=29"
+    "/?page_id=7"
 ]
 
 for _ in range(randint(2, 10)):
