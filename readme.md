@@ -13,6 +13,10 @@ Forge is a Python framework designed to facilitate design and implementation of 
 
 This project was built to replicate the functionality of DetGen, another synthetic network traffic generator that can be found here: [DetGen](https://github.com/detlearsom/detgen), under the supervision and guidance of David Aspinall and Robert Flood.
 
+### Note
+
+Please note that this project is on going and is soley developed by myself, therefor there will still likely be bugs throughout the code. Please bear with me whilst I work to keep improving Forge, and do feel free to let me know of any issues you encounter!
+
 ## Any Questions? Any Ideas?
 
 If you have any: questions, ideas, improvements, examples of your benefit or use, please get in touch! You can find me here: [https://sam-mccormack.co.uk](https://sam-mccormack.co.uk)
