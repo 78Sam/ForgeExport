@@ -175,7 +175,7 @@ def scenario(
         #! Start multithreaded requests
 
         threads: dict[str, list[Thread, Traffic]] = {}
-        for x in range(5):
+        for x in range(10):
             container_name: str = f"requests-{x}"
             inst = Traffic(
                 container=containers[container_name],

@@ -81,7 +81,7 @@
             "volumes": ["{self.pwd}/environment/scripts:/usr/share/scripts"],
             "depends_on": ["wordpress", "exploit", "admin-requests", "router"],
             "services": ["requests-dump"],
-            "clones": 5,
+            "clones": 10,
             "networking": {
                 "network": "wan"
             }
