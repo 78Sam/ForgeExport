@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 python3 -m venv "forgevenv"
 source ./forgevenv/bin/activate

@@ -198,6 +198,9 @@ def build() -> None:
 
             date_time = datetime.now().strftime("%d_%m_%Y_H%H_M%M")
 
+            if not os.path.isdir("./containers/build-logs"):
+                os.makedirs("./containers/build-logs", exist_ok=True)
+
             with open(f"./containers/build-logs/build_result_{date_time}.log", "w") as build_result:
                 build_result.write(progress)
 

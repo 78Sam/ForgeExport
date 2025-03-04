@@ -76,9 +76,9 @@ def scenario(
             skip_networks=False, # Bring the networks down?
             skip_intents=False, # Write all container intents to a file?
             skip_trail=False, # Create a shell script of the scenario?
-            skip_flows=True, # Convert PCAP to flows?
-            skip_tests=True, # Run WhiffSuite tests on flows?
-            skip_webpage=True # Create a webpage of the test results?
+            skip_flows=False, # Convert PCAP to flows?
+            skip_tests=False, # Run WhiffSuite tests on flows?
+            skip_webpage=False # Create a webpage of the test results?
         )
 
     logger.log(

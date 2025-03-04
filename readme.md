@@ -17,6 +17,18 @@ This project was built to replicate the functionality of DetGen, another synthet
 
 If you have any: questions, ideas, improvements, examples of your benefit or use, please get in touch! You can find me here: [https://sam-mccormack.co.uk](https://sam-mccormack.co.uk)
 
+### Some Questions To You
+
+- Is there anything you find frustrating about using this framework?
+- What are the sort of scenarios can you see yourself implementing?
+    - Are these simple implementations or much more complicated multi-network simulations?
+- What sort of data or results would you find useful?
+    - Is PCAP->Flow + testing enough, or is there something else that would be useful in order to interpret results better?
+- More generally, could you see this framework being used within your field?
+    - How does it compare with other tools you may have used in the past?
+- Is there any additional tooling that would be useful?
+    - Maybe things like network graphs or streaming modes for real time PCAP to flow conversion?
+
 ## Requirements
 
 It is recommended to use Linux for this framework, although I can run most scenarios on a Macbook M2 (excluding flow creation and network condition application)
@@ -49,7 +61,7 @@ There is also a simple shell script to create a Python venv for you to use at `s
         - [Explaining Some Boilerplate Code](#explaining-some-boilerplate-code)
         - [The Meat](#the-meat)
         - [A Final Note](#a-final-note)
-- [A Much More Complicated Scenario](#a-much-more-complicated-scenario)
+- [Some Much More Complicated Scenarios](#some-much-more-complicated-scenarios)
 
 <div style="page-break-after: always;"></div>
 
@@ -455,7 +467,7 @@ Whilst I did not explain testing this scenario, I have run testing on this scena
 
 <div style="page-break-after: always;"></div>
 
-# A much more complicated scenario
+# Some Much More Complicated Scenarios
 
 I've included two other scenarios, one is slightly more complex and the other is much more complex:
 - `scenarios/scenario-ssh-bruteforce` (Medium complexity) NMAP, Siege, Hydra ssh password bruteforce, sensitive documents exfil
