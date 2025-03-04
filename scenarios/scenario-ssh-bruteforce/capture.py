@@ -80,9 +80,9 @@ def scenario(
     controller.complete(
         trail="data/trail.sh",
         intents="data/intents.txt",
-        skip_flows=True,
-        skip_tests=True,
-        skip_webpage=True
+        skip_flows=False,
+        skip_tests=False,
+        skip_webpage=False
     )
 
     logger.outLog(f"{pwd}/data/log.txt")
