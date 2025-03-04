@@ -31,7 +31,7 @@ If you have any: questions, ideas, improvements, examples of your benefit or use
 - More generally, could you see this framework being used within your field?
     - How does it compare with other tools you may have used in the past?
 - Is there any additional tooling that would be useful?
-    - Maybe things like network graphs or streaming modes for real time PCAP to flow conversion?
+    - Maybe things like network graph generation or streaming modes for real time PCAP to flow conversion?
 
 ## Requirements
 
