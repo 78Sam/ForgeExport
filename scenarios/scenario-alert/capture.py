@@ -289,20 +289,20 @@ def main() -> None:
     containers: dict[str, Container] = context.getContainers()
     networks = context.getNetworks()
 
-    # scenario(
-    #     controller=controller,
-    #     containers=containers,
-    #     networks=networks,
-    #     pwd=CAPTURE_DIR,
-    #     logger=logger,
-    #     sandbox=sandbox
-    # )
+    scenario(
+        controller=controller,
+        containers=containers,
+        networks=networks,
+        pwd=CAPTURE_DIR,
+        logger=logger,
+        sandbox=sandbox
+    )
 
-    controller.markFlows()
+    # controller.markFlows()
 
-    controller.executeTests()
+    # controller.executeTests()
 
-    createWebpage(context=context, logger=logger, pwd=CAPTURE_DIR)
+    # createWebpage(context=context, logger=logger, pwd=CAPTURE_DIR)
 
     return
 
